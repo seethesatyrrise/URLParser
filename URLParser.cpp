@@ -60,7 +60,7 @@ void URLParser::ParseParams(std::string paramsStr) {
         }
         int valueSeparator = param.find("=");
         if (valueSeparator < 0) {
-            std::cout << "invalid param, ";
+            std::cout << "invalid param; ";
             continue;
         }
         params[param.substr(0, valueSeparator)].push_back(param.substr(valueSeparator + 1));
@@ -75,7 +75,9 @@ std::string URLParser::GetPath(int pathNum) {
     if (pathNum >= 0 && paths.size() > pathNum)
         return paths[pathNum];
     else {
-        std::cout << "no path for this num, ";
+#ifdef TESTING
+        std::cout << "no path for this num; ";
+#endif
         return "";
     }
 }

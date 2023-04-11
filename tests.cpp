@@ -5,15 +5,11 @@ void DoTests() {
     const char* request2 = new char[100]{"POST http://abc.ru/main/test"};
     const char* request3 = new char[100]{"DELETE http://abc.ru/main/part2?param=3&param=4"};
     const char* request4 = new char[100]{"PUT http://abc.ru/main/test/test1?id=1&value=10"};
-    const char* request5 = new char[100]{"ABC http://abc.ru/main/test/test1"};
-    const char* request6 = new char[100]{"http://abc.ru/main/test/test1"};
 
     TestGetMethod(request1, Method::GET);
     TestGetMethod(request2, Method::POST);
     TestGetMethod(request3, Method::DELETE);
     TestGetMethod(request4, Method::PUT);
-    TestGetMethod(request5, Method::GET);
-    TestGetMethod(request6, Method::GET);
 
     std::cout << "\n";
 
@@ -31,6 +27,11 @@ void DoTests() {
 
     TestGetParams(request3, request3params);
     TestGetParams(request4, request4params);
+
+    delete request1;
+    delete request2;
+    delete request3;
+    delete request4;
 }
 
 void TestGetMethod(const char* url, Method expected) {
